@@ -9,5 +9,4 @@ ADD requirements.txt requirements.txt
 
 RUN pip install -r requirements.txt
 
-# You can overwrite command in `serverless.yml` template
 CMD ["/app/main.handler"]
