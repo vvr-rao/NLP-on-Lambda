@@ -60,11 +60,13 @@ def handler(event, context):
     model.eval()
     class_names = ['Negative','Neutral','Positive']
 
-    input_ids = encoded_review['input_ids']
-    attention_mask = encoded_review['attention_mask']
-    output = model(input_ids, attention_mask)
+    with torch.no_grad():
+        input_ids = encoded_review['input_ids']
+        attention_mask = encoded_review['attention_mask']
+        
+        output = model(input_ids, attention_mask)
 
-    _, prediction = torch.max(output, dim=1)
+        _, prediction = torch.max(output, dim=1)
 
     response = {"Input": payload, "Sentiment": class_names[prediction]}
     return response
