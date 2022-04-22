@@ -7,7 +7,7 @@ from torch.utils.data import Dataset, DataLoader
 
 def handler(event, context):
     #import tokenizer and bert-base-cased model
-    local_path = '/bert-base-cased-LOCAL/'
+    local_path = './bert-base-cased-LOCAL/'
     tokenizer = AutoTokenizer.from_pretrained(local_path)
     bert_model = AutoModel.from_pretrained(local_path) 
     
@@ -32,7 +32,7 @@ def handler(event, context):
 
     #load the model state dict
 
-    m = torch.load('/model/best_model_state_cpu.bin')
+    m = torch.load('./model/best_model_state_cpu.bin')
     model.load_state_dict(m)
 
     #read the input
