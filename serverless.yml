@@ -1,13 +1,19 @@
-service: aws-container-lambda
-framework Version: "2"
+service: myservice
 provider:
   name: aws
-  lambdaHashingVersion: 20201221
   ecr:
     images:
-      appimage:
+      myimage:
         path: ./
 functions:
-  hello:
+  get_sentiment:
     image:
-      name: appimage
+      name: myimage
+    timeout: 300
+    memorySize: 512
+    provisionedConcurrency: 3
+    reservedConcurrency: 5
+    events:
+      - http:
+          path: qa # http path
+          method: post # http method
