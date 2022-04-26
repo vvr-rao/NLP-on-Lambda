@@ -10,7 +10,7 @@ functions:
     image:
       name: myimage
     timeout: 300
-    memorySize: 512
+    memorySize: 2048
     provisionedConcurrency: 3
     reservedConcurrency: 5
     events:
