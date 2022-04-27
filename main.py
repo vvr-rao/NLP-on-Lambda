@@ -37,9 +37,11 @@ def handler(event, context):
 
     #read the input
             
-    data = json.loads(json.dumps(event))
-    payload = data['data']
-    
+    #data = json.loads(json.dumps(event))
+    #payload = data['data']
+    data = json.loads(event['body'])
+    data1 = json.loads(json.dumps(data))
+    payload = data1['data']
     
     string1 = payload.replace('\d+', '') # remove digits
     string1 = string1.replace('[^\w\s]', '') # remove punctuation
@@ -68,5 +70,6 @@ def handler(event, context):
 
         _, prediction = torch.max(output, dim=1)
 
-    response = {"Input": payload, "Sentiment": class_names[prediction]}
+    #response = {"Input": payload, "Sentiment": class_names[prediction]}
+    response = {"statusCode": 200, "body": class_names[prediction]}
     return response
