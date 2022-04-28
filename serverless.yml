@@ -11,8 +11,8 @@ functions:
     image:
       name: appimage
     timeout: 300
-    memorySize: 2048
-    ephemeralStorageSize: 2048
+    memorySize: 3072
+    ephemeralStorageSize: 3072
     provisionedConcurrency: 3
     reservedConcurrency: 5
     events:
